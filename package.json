@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/Grandado/web-service-crud/issues"
   },
-  "homepage": "https://github.com/Grandado/web-service-crud#readme"
+  "homepage": "https://github.com/Grandado/web-service-crud#readme",
+  "dependencies": {
+    "debug": "^4.3.4",
+    "express": "^4.18.1",
+    "http": "^0.0.1-security"
+  }
 }
