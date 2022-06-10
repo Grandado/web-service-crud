@@ -10,9 +10,24 @@ exports.get = async () => {
   return res;
 };
 
-exports.getIdByCPF = async (valor) => {
-  const res = await Cliente.findOne({ cpf: valor }, '_id');
-  return res;
+exports.putById = async (valor) => {
+  await Cliente.findByIdAndUpdate(valor._id, {
+    $set: {
+      nome: valor.nome,
+      email: valor.email,
+      telefone: valor.telefone,
+      celular: valor.celular,
+      cpf: valor.cpf,
+      cep: valor.cep,
+      rua: valor.rua,
+      numero: valor.numero,
+      complemento: valor.complemento,
+      bairro: valor.bairro,
+      estado: valor.estado,
+      cidade: valor.cidade,
+      nascimento: valor.nascimento,
+    },
+  });
 };
 
 exports.post = async (dados) => {
@@ -20,5 +35,6 @@ exports.post = async (dados) => {
   const cliente = new Cliente(dados);
   await cliente.save();
 };
-exports.put = async () => {};
-exports.delete = async () => {};
+exports.delete = async (id) => {
+  await Cliente.findByIdAndDelete(id);
+};
