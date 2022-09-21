@@ -7,7 +7,9 @@ exports.get = async (req, res, next) => {
     let data = await repository.get();
     res.status(200).send(data);
   } catch (e) {
-    res.status(500).send({ message: 'Falha ao processar a requisição' });
+    res
+      .status(500)
+      .send({ message: 'Falha ao processar a requisição. Erro: ' + e });
   }
 };
 
@@ -23,12 +25,15 @@ exports.post = async (req, res, next) => {
     });
   }
 };
+
 exports.alterar = async (req, res, next) => {
   try {
     await repository.putById(req.body);
     res.status(200).send({ message: 'Cliente alterado!' });
   } catch (e) {
-    res.status(500).send({ message: 'Falha ao processar a requisição' });
+    res
+      .status(500)
+      .send({ message: 'Falha ao processar a requisição. Erro: ' + e });
   }
 };
 exports.delete = async (req, res, next) => {
@@ -36,6 +41,8 @@ exports.delete = async (req, res, next) => {
     await repository.delete(req.body.id);
     res.status(200).send({ message: 'Cliente Excluido' });
   } catch (e) {
-    res.status(500).send({ message: 'Falha ao processar a requisição' });
+    res
+      .status(500)
+      .send({ message: 'Falha ao processar a requisição. Erro: ' + e });
   }
 };
